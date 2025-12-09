@@ -1,0 +1,27 @@
+{
+  "name": "bas-automation-project",
+  "version": "1.0.0",
+  "description": "Browser Automation Studio project with optimized configuration",
+  "main": "config/main.json",
+  "keywords": [
+    "bas",
+    "browser-automation",
+    "automation",
+    "web-scraping",
+    "fingerprint"
+  ],
+  "author": "twitcaca",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/twitcaca/bas-automation-project.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}
