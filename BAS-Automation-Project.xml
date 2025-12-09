@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BASAutomationProject version="2.0">
+  <metadata>
+    <projectName>BAS Automation Project</projectName>
+    <description>Complete BAS (Business Automation Service) Automation Project Configuration</description>
+    <createdDate>2025-12-09T06:58:45Z</createdDate>
+    <lastModified>2025-12-09T06:58:45Z</lastModified>
+    <author>twitcaca</author>
+    <xmlVersion>2.0</xmlVersion>
+  </metadata>
+
+  <configuration>
+    <general>
+      <projectId>BAS-AUTO-001</projectId>
+      <environment>production</environment>
+      <timeZone>UTC</timeZone>
+      <debugMode>false</debugMode>
+      <loggingLevel>INFO</loggingLevel>
+    </general>
+
+    <automation>
+      <workflows>
+        <workflow id="WF-001">
+          <name>Data Ingestion Workflow</name>
+          <description>Automated data ingestion from multiple sources</description>
+          <enabled>true</enabled>
+          <schedule>
+            <frequency>daily</frequency>
+            <time>02:00</time>
+            <timezone>UTC</timezone>
+          </schedule>
+          <steps>
+            <step id="STEP-001">
+              <name>Extract Data</name>
+              <type>extraction</type>
+              <source>database</source>
+              <retryPolicy>
+                <maxAttempts>3</maxAttempts>
+                <backoffMs>5000</backoffMs>
+              </retryPolicy>
+            </step>
+            <step id="STEP-002">
+              <name>Transform Data</name>
+              <type>transformation</type>
+              <validator>enabled</validator>
+              <rules>
+                <rule>data_validation</rule>
+                <rule>schema_conformance</rule>
+              </rules>
+            </step>
+            <step id="STEP-003">
+              <name>Load Data</name>
+              <type>loading</type>
+              <destination>warehouse</destination>
+              <batchSize>1000</batchSize>
+            </step>
+          </steps>
+        </workflow>
+
+        <workflow id="WF-002">
+          <name>Report Generation Workflow</name>
+          <description>Automated generation and distribution of reports</description>
+          <enabled>true</enabled>
+          <schedule>
+            <frequency>weekly</frequency>
+            <dayOfWeek>monday</dayOfWeek>
+            <time>08:00</time>
+            <timezone>UTC</timezone>
+          </schedule>
+          <steps>
+            <step id="STEP-004">
+              <name>Collect Metrics</name>
+              <type>aggregation</type>
+            </step>
+            <step id="STEP-005">
+              <name>Generate Reports</name>
+              <type>generation</type>
+              <formats>
+                <format>PDF</format>
+                <format>Excel</format>
+                <format>HTML</format>
+              </formats>
+            </step>
+            <step id="STEP-006">
+              <name>Distribute Reports</name>
+              <type>distribution</type>
+              <channels>
+                <channel type="email">
+                  <recipients>
+                    <recipient>admin@example.com</recipient>
+                    <recipient>manager@example.com</recipient>
+                  </recipients>
+                </channel>
+              </channels>
+            </step>
+          </steps>
+        </workflow>
+
+        <workflow id="WF-003">
+          <name>System Monitoring Workflow</name>
+          <description>Continuous system health and performance monitoring</description>
+          <enabled>true</enabled>
+          <schedule>
+            <frequency>continuous</frequency>
+            <intervalSeconds>300</intervalSeconds>
+          </schedule>
+          <steps>
+            <step id="STEP-007">
+              <name>Check System Health</name>
+              <type>monitoring</type>
+              <metrics>
+                <metric>cpu_usage</metric>
+                <metric>memory_usage</metric>
+                <metric>disk_space</metric>
+                <metric>network_connectivity</metric>
+              </metrics>
+              <thresholds>
+                <threshold metric="cpu_usage">80</threshold>
+                <threshold metric="memory_usage">85</threshold>
+                <threshold metric="disk_space">90</threshold>
+              </thresholds>
+            </step>
+            <step id="STEP-008">
+              <name>Alert on Anomalies</name>
+              <type>alerting</type>
+              <severityLevels>
+                <level>critical</level>
+                <level>warning</level>
+                <level>info</level>
+              </severityLevels>
+            </step>
+          </steps>
+        </workflow>
+      </workflows>
+
+      <triggers>
+        <trigger id="TRIG-001">
+          <name>Data Available Trigger</name>
+          <type>event</type>
+          <eventType>data_arrival</eventType>
+          <action>execute_workflow</action>
+          <targetWorkflow>WF-001</targetWorkflow>
+        </trigger>
+        <trigger id="TRIG-002">
+          <name>Manual Trigger</name>
+          <type>manual</type>
+          <action>execute_workflow</action>
+          <targetWorkflow>WF-002</targetWorkflow>
+        </trigger>
+      </triggers>
+
+      <errorHandling>
+        <onFailure>
+          <action>retry</action>
+          <maxRetries>3</maxRetries>
+          <backoffStrategy>exponential</backoffStrategy>
+        </onFailure>
+        <onError>
+          <action>notify</action>
+          <notificationMethod>email</notificationMethod>
+          <recipients>
+            <recipient>admin@example.com</recipient>
+          </recipients>
+        </onError>
+      </errorHandling>
+    </automation>
+
+    <integration>
+      <connectors>
+        <connector id="CONN-001">
+          <name>Database Connection</name>
+          <type>database</type>
+          <driver>PostgreSQL</driver>
+          <host>db.example.com</host>
+          <port>5432</port>
+          <connectionPoolSize>20</connectionPoolSize>
+          <timeout>30</timeout>
+        </connector>
+        <connector id="CONN-002">
+          <name>API Integration</name>
+          <type>rest_api</type>
+          <baseUrl>https://api.example.com</baseUrl>
+          <authentication>oauth2</authentication>
+          <timeout>60</timeout>
+          <retryPolicy>
+            <maxRetries>3</maxRetries>
+            <backoffMs>1000</backoffMs>
+          </retryPolicy>
+        </connector>
+        <connector id="CONN-003">
+          <name>File Storage</name>
+          <type>cloud_storage</type>
+          <provider>AWS S3</provider>
+          <bucket>bas-automation-bucket</bucket>
+          <region>us-east-1</region>
+        </connector>
+      </connectors>
+
+      <services>
+        <service id="SVC-001">
+          <name>Data Validation Service</name>
+          <endpoint>/services/validate</endpoint>
+          <method>POST</method>
+          <timeout>30</timeout>
+        </service>
+        <service id="SVC-002">
+          <name>Transformation Service</name>
+          <endpoint>/services/transform</endpoint>
+          <method>POST</method>
+          <timeout>60</timeout>
+        </service>
+        <service id="SVC-003">
+          <name>Notification Service</name>
+          <endpoint>/services/notify</endpoint>
+          <method>POST</method>
+          <timeout>10</timeout>
+        </service>
+      </services>
+    </integration>
+
+    <security>
+      <authentication>
+        <method>oauth2</method>
+        <provider>active_directory</provider>
+        <tokenExpiry>3600</tokenExpiry>
+      </authentication>
+      <authorization>
+        <roleBasedAccess>true</roleBasedAccess>
+        <roles>
+          <role name="admin">
+            <permissions>
+              <permission>create_workflow</permission>
+              <permission>execute_workflow</permission>
+              <permission>delete_workflow</permission>
+              <permission>manage_users</permission>
+            </permissions>
+          </role>
+          <role name="operator">
+            <permissions>
+              <permission>execute_workflow</permission>
+              <permission>view_logs</permission>
+            </permissions>
+          </role>
+          <role name="viewer">
+            <permissions>
+              <permission>view_logs</permission>
+              <permission>view_reports</permission>
+            </permissions>
+          </role>
+        </roles>
+      </authorization>
+      <encryption>
+        <enabled>true</enabled>
+        <algorithm>AES-256</algorithm>
+        <keyManagement>vault</keyManagement>
+      </encryption>
+      <auditLogging>
+        <enabled>true</enabled>
+        <logLevel>detailed</logLevel>
+        <retention>365</retention>
+      </auditLogging>
+    </security>
+
+    <monitoring>
+      <performance>
+        <metricsCollection>
+          <enabled>true</enabled>
+          <interval>60</interval>
+          <metrics>
+            <metric>execution_time</metric>
+            <metric>success_rate</metric>
+            <metric>failure_rate</metric>
+            <metric>throughput</metric>
+          </metrics>
+        </metricsCollection>
+      </performance>
+      <alerting>
+        <enabled>true</enabled>
+        <rules>
+          <rule id="ALERT-001">
+            <name>High Failure Rate</name>
+            <condition>failure_rate &gt; 10%</condition>
+            <severity>critical</severity>
+            <action>notify_admin</action>
+          </rule>
+          <rule id="ALERT-002">
+            <name>High Execution Time</name>
+            <condition>execution_time &gt; 3600</condition>
+            <severity>warning</severity>
+            <action>notify_operator</action>
+          </rule>
+        </rules>
+      </alerting>
+      <logging>
+        <level>INFO</level>
+        <format>JSON</format>
+        <destination>file</destination>
+        <fileLocation>/var/log/bas-automation/</fileLocation>
+        <maxFileSize>104857600</maxFileSize>
+        <maxBackupIndex>10</maxBackupIndex>
+      </logging>
+    </monitoring>
+
+    <resources>
+      <compute>
+        <cpuCores>8</cpuCores>
+        <memoryGb>32</memoryGb>
+        <storageGb>500</storageGb>
+      </compute>
+      <limits>
+        <maxConcurrentWorkflows>10</maxConcurrentWorkflows>
+        <maxWorkflowDuration>7200</maxWorkflowDuration>
+        <maxRetries>5</maxRetries>
+        <maxQueueSize>1000</maxQueueSize>
+      </limits>
+    </resources>
+
+    <backup>
+      <enabled>true</enabled>
+      <frequency>daily</frequency>
+      <time>01:00</time>
+      <retentionDays>30</retentionDays>
+      <destination>s3://bas-automation-backups/</destination>
+    </backup>
+
+    <maintenance>
+      <enabled>true</enabled>
+      <schedule>
+        <frequency>weekly</frequency>
+        <dayOfWeek>sunday</dayOfWeek>
+        <time>03:00</time>
+        <duration>120</duration>
+      </schedule>
+      <tasks>
+        <task>cleanup_logs</task>
+        <task>optimize_database</task>
+        <task>refresh_cache</task>
+      </tasks>
+    </maintenance>
+  </configuration>
+
+  <versioning>
+    <version>2.0</version>
+    <releaseDate>2025-12-09</releaseDate>
+    <changeLog>
+      <entry version="2.0">
+        <date>2025-12-09</date>
+        <changes>
+          <change>Added comprehensive workflow definitions</change>
+          <change>Enhanced security configuration</change>
+          <change>Implemented monitoring and alerting</change>
+          <change>Added backup and maintenance schedules</change>
+        </changes>
+      </entry>
+    </changeLog>
+  </versioning>
+
+  <notes>
+    <note>This configuration file defines the complete BAS Automation Project setup</note>
+    <note>All connectors and services must be properly configured before deployment</note>
+    <note>Ensure security credentials are stored securely and not hardcoded</note>
+    <note>Review and test all workflows in a staging environment first</note>
+    <note>Monitor all automated tasks regularly for performance and errors</note>
+  </notes>
+</BASAutomationProject>
