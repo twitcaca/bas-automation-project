@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BASAutomationProject>
+  <ProjectMetadata>
+    <ProjectName>BAS-Automation-Project-Final</ProjectName>
+    <Version>1.0</Version>
+    <CreatedDate>2025-12-09</CreatedDate>
+    <Author>twitcaca</Author>
+    <Description>Complete BAS automation script with comprehensive browser configuration, fingerprint settings, and platform specifications</Description>
+  </ProjectMetadata>
+
+  <BrowserConfiguration>
+    <Engine>Chrome</Engine>
+    <EngineVersion>Latest</EngineVersion>
+    <BrowserMode>Headless</BrowserMode>
+    <ProfileMode>Persistent</ProfileMode>
+    
+    <ChromeSettings>
+      <BinaryPath>auto</BinaryPath>
+      <UserDataDir>./chrome_profiles</UserDataDir>
+      <DisableGpu>false</DisableGpu>
+      <NoSandbox>false</NoSandbox>
+      <RemoteDebuggingPort>9222</RemoteDebuggingPort>
+      <Timeout>30000</Timeout>
+      
+      <CommandLineFlags>
+        <Flag>--disable-blink-features=AutomationControlled</Flag>
+        <Flag>--disable-dev-shm-usage</Flag>
+        <Flag>--no-first-run</Flag>
+        <Flag>--no-default-browser-check</Flag>
+        <Flag>--disable-popup-blocking</Flag>
+        <Flag>--disable-extensions</Flag>
+        <Flag>--disable-plugins</Flag>
+      </CommandLineFlags>
+    </ChromeSettings>
+  </BrowserConfiguration>
+
+  <FingerprintSettings>
+    <FingerprintMode>Advanced</FingerprintMode>
+    <FingerprintProvider>Premium</FingerprintProvider>
+    <AutoRotation>true</AutoRotation>
+    <RotationInterval>3600</RotationInterval>
+    
+    <UserAgent>
+      <Type>Random</Type>
+      <Value>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36</Value>
+      <RandomizeOnEachRequest>false</RandomizeOnEachRequest>
+    </UserAgent>
+    
+    <BrowserProperties>
+      <Platform>Windows</Platform>
+      <PlatformVersion>10.0</PlatformVersion>
+      <Architecture>x86_64</Architecture>
+      <Language>en-US</Language>
+      <Languages>en-US,en</Languages>
+      <Timezone>UTC</Timezone>
+      <Geolocation>
+        <Enabled>false</Enabled>
+        <Latitude>0.0</Latitude>
+        <Longitude>0.0</Longitude>
+      </Geolocation>
+    </BrowserProperties>
+    
+    <HardwareSpecs>
+      <Processor>Intel Core i7</Processor>
+      <ProcessorCount>8</ProcessorCount>
+      <DeviceMemory>8</DeviceMemory>
+      <ScreenWidth>1920</ScreenWidth>
+      <ScreenHeight>1080</ScreenHeight>
+      <ColorDepth>24</ColorDepth>
+      <DevicePixelRatio>1.0</DevicePixelRatio>
+      <TouchEnabled>false</TouchEnabled>
+    </HardwareSpecs>
+    
+    <WebGLSettings>
+      <Enabled>true</Enabled>
+      <Vendor>Intel Inc.</Vendor>
+      <Renderer>Intel Iris Graphics</Renderer>
+      <Version>WebGL 2.0</Version>
+    </WebGLSettings>
+    
+    <PluginsSettings>
+      <EnableFlash>false</EnableFlash>
+      <EnableJava>false</EnableJava>
+      <PluginList>
+        <Plugin>
+          <Name>Chrome PDF Plugin</Name>
+          <Type>application/x-google-chrome-pdf</Type>
+          <Enabled>true</Enabled>
+        </Plugin>
+      </PluginList>
+    </PluginsSettings>
+  </FingerprintSettings>
+
+  <CanvasSettings>
+    <CanvasProtection>Perfect</CanvasProtection>
+    <NoiseLevel>0.1</NoiseLevel>
+    <NoiseType>Gaussian</NoiseType>
+    <CanvasFingerprinting>Enabled</CanvasFingerprinting>
+    
+    <CanvasParameters>
+      <TextRendering>
+        <Method>Native</Method>
+        <FontSmoothing>Subpixel</FontSmoothing>
+        <CharacterSpacing>Normal</CharacterSpacing>
+      </TextRendering>
+      
+      <ImageData>
+        <Randomization>Enabled</Randomization>
+        <RandomizationStrength>Medium</RandomizationStrength>
+      </ImageData>
+      
+      <WebGLDrawing>
+        <Randomization>Enabled</Randomization>
+        <VertexShaderNoise>true</VertexShaderNoise>
+        <FragmentShaderNoise>true</FragmentShaderNoise>
+      </WebGLDrawing>
+      
+      <AudioContext>
+        <Randomization>Enabled</Randomization>
+        <NoiseAddition>0.05</NoiseAddition>
+      </AudioContext>
+    </CanvasParameters>
+  </CanvasSettings>
+
+  <PlatformSettings>
+    <OperatingSystem>Windows</OperatingSystem>
+    <OSVersion>10</OSVersion>
+    <OSBuild>19045</OSBuild>
+    <Bitness>64-bit</Bitness>
+    
+    <WindowsSpecific>
+      <Edition>Professional</Edition>
+      <ProductKey>Hidden</ProductKey>
+      <ComputerName>DESKTOP-USER</ComputerName>
+      <Username>User</Username>
+      <SystemLocale>en-US</SystemLocale>
+      <InputLocale>en-US</InputLocale>
+      <TimeZone>UTC</TimeZone>
+    </WindowsSpecific>
+    
+    <SystemSettings>
+      <UpdatesEnabled>true</UpdatesEnabled>
+      <AntivirusPresent>true</AntivirusPresent>
+      <AntivirusProvider>Windows Defender</AntivirusProvider>
+      <FirewallEnabled>true</FirewallEnabled>
+      <UACEnabled>true</UACEnabled>
+    </SystemSettings>
+  </PlatformSettings>
+
+  <WarningSuppressionSettings>
+    <SuppressAllWarnings>true</SuppressAllWarnings>
+    <SuppressedWarnings>
+      <Warning>ChromiumDebugProtocol</Warning>
+      <Warning>DeprecatedAPIs</Warning>
+      <Warning>InsecureContentBlockage</Warning>
+      <Warning>MixedContent</Warning>
+      <Warning>CORSErrors</Warning>
+      <Warning>CSPViolations</Warning>
+      <Warning>UnsafeJavaScriptEvaluation</Warning>
+      <Warning>ConsoleMessages</Warning>
+      <Warning>NetworkThrottling</Warning>
+      <Warning>RemoteDebuggerAttached</Warning>
+      <Warning>WebDriverPresence</Warning>
+      <Warning>HeadlessBrowserDetection</Warning>
+      <Warning>AutomationToolDetection</Warning>
+    </SuppressedWarnings>
+    
+    <LoggingConfiguration>
+      <LogLevel>WARN</LogLevel>
+      <LogOutput>file</LogOutput>
+      <LogFile>./logs/bas_automation.log</LogFile>
+      <MaxLogFileSize>10485760</MaxLogFileSize>
+      <LogRotation>true</LogRotation>
+      <LogRetentionDays>30</LogRetentionDays>
+    </LoggingConfiguration>
+  </WarningSuppressionSettings>
+
+  <NetworkSettings>
+    <ProxySettings>
+      <ProxyEnabled>false</ProxyEnabled>
+      <ProxyType>HTTP</ProxyType>
+      <ProxyHost>127.0.0.1</ProxyHost>
+      <ProxyPort>8080</ProxyPort>
+      <ProxyAuthentication>false</ProxyAuthentication>
+    </ProxySettings>
+    
+    <CacheSettings>
+      <CacheEnabled>true</CacheEnabled>
+      <CachePath>./browser_cache</CachePath>
+      <CacheSize>104857600</CacheSize>
+    </CacheSettings>
+    
+    <CookieSettings>
+      <PersistentCookies>true</PersistentCookies>
+      <CookiePath>./cookies</CookiePath>
+      <CookieSecureFlag>true</CookieSecureFlag>
+      <CookieSameSite>Lax</CookieSameSite>
+    </CookieSettings>
+  </NetworkSettings>
+
+  <ScriptSettings>
+    <TimeoutSettings>
+      <DefaultTimeout>30000</DefaultTimeout>
+      <NavigationTimeout>60000</NavigationTimeout>
+      <ScreenshotTimeout>10000</ScreenshotTimeout>
+    </TimeoutSettings>
+    
+    <ErrorHandling>
+      <StopOnError>false</StopOnError>
+      <RetryAttempts>3</RetryAttempts>
+      <RetryDelay>2000</RetryDelay>
+    </ErrorHandling>
+    
+    <ScreenshotSettings>
+      <CaptureScreenshots>true</CaptureScreenshots>
+      <ScreenshotPath>./screenshots</ScreenshotPath>
+      <ScreenshotFormat>png</ScreenshotFormat>
+      <ScreenshotQuality>100</ScreenshotQuality>
+      <FullPageScreenshot>true</FullPageScreenshot>
+    </ScreenshotSettings>
+  </ScriptSettings>
+
+  <SecuritySettings>
+    <SSLVerification>true</SSLVerification>
+    <InsecureContentAllowed>false</InsecureContentAllowed>
+    <CertificateValidation>Strict</CertificateValidation>
+    <DataEncryption>AES256</DataEncryption>
+    <DataEncryptionKey>encrypted</DataEncryptionKey>
+  </SecuritySettings>
+
+  <PerformanceSettings>
+    <CPUThrottle>1.0</CPUThrottle>
+    <NetworkThrottle>offline</NetworkThrottle>
+    <MemoryOptimization>true</MemoryOptimization>
+    <BandwidthLimit>-1</BandwidthLimit>
+    <LatencySimulation>0</LatencySimulation>
+  </PerformanceSettings>
+
+  <AutomationTasks>
+    <TaskList>
+      <Task>
+        <TaskId>1</TaskId>
+        <TaskName>Initialize Browser</TaskName>
+        <TaskDescription>Initialize Chrome browser with configured fingerprint and canvas settings</TaskDescription>
+        <Enabled>true</Enabled>
+        <Priority>1</Priority>
+      </Task>
+      
+      <Task>
+        <TaskId>2</TaskId>
+        <TaskName>Load Target Website</TaskName>
+        <TaskDescription>Navigate to target website with proper headers and user agent</TaskDescription>
+        <Enabled>true</Enabled>
+        <Priority>2</Priority>
+      </Task>
+      
+      <Task>
+        <TaskId>3</TaskId>
+        <TaskName>Execute Automation Script</TaskName>
+        <TaskDescription>Execute main automation script with all security and fingerprint protections</TaskDescription>
+        <Enabled>true</Enabled>
+        <Priority>3</Priority>
+      </Task>
+      
+      <Task>
+        <TaskId>4</TaskId>
+        <TaskName>Cleanup and Close</TaskName>
+        <TaskDescription>Cleanup temporary files and close browser gracefully</TaskDescription>
+        <Enabled>true</Enabled>
+        <Priority>4</Priority>
+      </Task>
+    </TaskList>
+  </AutomationTasks>
+
+  <NotificationSettings>
+    <EnableNotifications>false</EnableNotifications>
+    <NotificationPermission>deny</NotificationPermission>
+  </NotificationSettings>
+
+  <AdvancedSettings>
+    <StealthMode>true</StealthMode>
+    <AntiDetectionMode>true</AntiDetectionMode>
+    <CloudflareBypassing>true</CloudflareBypassing>
+    <RotateProxyOnEachRequest>false</RotateProxyOnEachRequest>
+    <RandomizeRequestHeaders>true</RandomizeRequestHeaders>
+    <CustomHeaders>
+      <Header>
+        <Name>Accept-Language</Name>
+        <Value>en-US,en;q=0.9</Value>
+      </Header>
+      <Header>
+        <Name>Accept-Encoding</Name>
+        <Value>gzip, deflate, br</Value>
+      </Header>
+      <Header>
+        <Name>Sec-Fetch-Dest</Name>
+        <Value>document</Value>
+      </Header>
+      <Header>
+        <Name>Sec-Fetch-Mode</Name>
+        <Value>navigate</Value>
+      </Header>
+      <Header>
+        <Name>Sec-Fetch-Site</Name>
+        <Value>none</Value>
+      </Header>
+    </CustomHeaders>
+  </AdvancedSettings>
+
+</BASAutomationProject>
