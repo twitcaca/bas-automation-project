@@ -1,0 +1,36 @@
+{
+  "fingerprint": {
+    "enabled": true,
+    "perfectCanvas": true,
+    "browserVersion": "current",
+    "userAgent": {
+      "autoDetect": true
+    },
+    "webGL": {
+      "enabled": true,
+      "vendor": "Google Inc.",
+      "renderer": "ANGLE (Intel HD Graphics 630)"
+    },
+    "canvas": {
+      "toDataURL": true,
+      "toBlob": true,
+      "getImageData": true
+    },
+    "webRTC": {
+      "enabled": true,
+      "publicIP": "auto"
+    },
+    "geolocation": {
+      "enabled": false
+    },
+    "plugins": {
+      "enableFlash": false,
+      "enableJava": false
+    },
+    "fonts": {
+      "enabled": true,
+      "autoDetect": true
+    },
+    "languages": ["tr-TR", "en-US"]
+  }
+}
